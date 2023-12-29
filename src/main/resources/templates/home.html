@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<title>Redirecting to Application Server</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="js/jquery.redirect.js"></script>
+</head>
+<body>
+    <!-- <h3><Strong>Welcome!</strong><br/>You are successfully logged in!</h3>
+    <p>You are logged as <span class="badge badge-dark" th:text="${userEmail}">null</span>.</p>
+    <p>First Name <span class="badge badge-dark" th:text="${firstName}">null</span>.</p>
+    <p>Last Name <span class="badge badge-dark" th:text="${lastName}">null</span>.</p>
+    <small>
+        <a th:href="@{/logout}">Logout</a>
+    </small> -->
+</body>
+<script th:inline="javascript">
+// User attributes recieved from the AD Server
+var username = [[${username}]];
+/* var firstname = [[${firstName}]];
+var lastName = [[${lastName}]]; */
+
+//Enter the application url that you need to redirect to
+//var redirect = 'https://itsupport.astralpipes.com/Helpdesk/login/loginADFS';
+var redirect = 'https://am.indiraivf.in/AssetGrid/login/adauthentication';
+$.redirect(redirect, {
+	username: username
+}, "POST");
+</script>
+</html>
